@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Edit Task{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-body">
+                <h4>Edit Task</h4>
+
+                
+                <form method="POST" action="{{ url_for('edit.edit_tasks', task_id=task.id) }}">
+                    <textarea name="content" class="form-control mb-2" required>{{ task.content }}</textarea>
+
+                    <input type="datetime-local" name="scheduled_time" class="form-control mb-2" 
+                           value="{{ task.scheduled_time.strftime('%Y-%m-%dT%H:%M') }}" required>
+
+                    <button class="btn btn-warning">Update</button>
+                </form>
+
+                
+                <form method="POST" action="{{ url_for('edit.delete_task', task_id=task.id) }}" style="margin-top:10px;">
+                    <button class="btn btn-danger" 
+                            onclick="return confirm('Are you sure you want to delete this task?')">
+                        Delete
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
