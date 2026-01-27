@@ -7,7 +7,7 @@ def create_app():
     app = Flask(__name__)
 
     app.config["SECRET_KEY"] = "my-key"
-    app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://rakib:1234@localhost:3306/smarttask_db"
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///todo.db"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
     db.init_app(app)
